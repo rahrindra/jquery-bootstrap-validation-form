@@ -1,26 +1,13 @@
 $(document).ready(function(){
-   	$('#monFormulaire').validate(
- 	{
- 		rules: {
-			nom: {
-				minlength: 2,
-				required: true
-			},
-			email: {
-				required: true,
-				email: true
-			}
-		},
-					
-		highlight: function(element) {
-    		$(element).closest('.control-group').removeClass('success').addClass('error');
-  		},
-
-  		success: function(element) {
-			element
-			.text('OK!').addClass('valid')
-			.closest('.control-group').removeClass('error').addClass('success');
-  		}
-  					
-	});
+   	// Ajout de notre méthode
+    $.validator.addClassRules({
+        nom:{
+            required: true,
+            digits: true,
+	        minlength: 5,
+	        maxlength: 5
+        }
+    });
+    // Initialisation du plugin
+    $("#monFormulaire").validate();
 });
